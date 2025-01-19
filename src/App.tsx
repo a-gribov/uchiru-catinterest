@@ -6,7 +6,7 @@ import FavoriteCats from './pages/FavoriteCats'
 import styles from './App.module.scss'
 
 const App = () => (
-  <Router>
+  <Router basename="/uchiru-catinterest">
     <ScrollToTop />
     <Header />
     <div className={styles.content}>

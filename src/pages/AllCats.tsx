@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import { fetchCats } from '../api/catsApi'
 import CatsList from '../components/CatsList'
@@ -9,17 +9,27 @@ import { observer } from 'mobx-react-lite'
 const AllCats = observer(() => {
   const [page, setPage] = useState(1)
 
+  const loadCats = useCallback(async () => {
+    const response = await fetchCats(10, page)
+    catStore.addCats(response.data)
+    setPage((prevPage) => prevPage + 1)
+  }, [page])
+
+  const checkForScroll = useCallback(() => {
+    const { scrollHeight, clientHeight } = document.documentElement
+    if (scrollHeight <= clientHeight && catStore.hasMoreCats) {
+      loadCats()
+    }
+  }, [loadCats])
+
   useEffect(() => {
     if (catStore.allCats.length === 0) {
       loadCats()
     }
-  })
-
-  const loadCats = async () => {
-    const response = await fetchCats(10, page)
-    catStore.addCats(response.data)
-    setPage(page + 1)
-  }
+    checkForScroll()
+    window.addEventListener('resize', checkForScroll)
+    return () => window.removeEventListener('resize', checkForScroll)
+  }, [loadCats, checkForScroll])
 
   return (
     <InfiniteScroll
