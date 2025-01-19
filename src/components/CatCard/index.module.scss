@@ -4,6 +4,7 @@
   flex-direction: column;
   align-items: center;
   aspect-ratio: 1/1;
+  user-select: none;
 
   &:hover {
     @media (min-width: 1280px) {

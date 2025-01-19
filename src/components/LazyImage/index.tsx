@@ -15,6 +15,7 @@ const LazyImage: React.FC<LazyImageProps> = ({ src, alt }) => {
       <img
         src={src}
         alt={alt}
+        draggable="false"
         onLoad={() => setLoaded(true)}
         className={`${styles.image} ${loaded ? styles.loaded : ''}`}
       />
