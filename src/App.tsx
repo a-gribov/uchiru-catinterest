@@ -7,7 +7,7 @@ import RouteTitleUpdater from './components/RouteTitleUpdater'
 import styles from './App.module.scss'
 
 const App = () => (
-  <Router>
+  <Router basename="/uchiru-catinterest">
     <ScrollToTop />
     <RouteTitleUpdater />
     <Header />
