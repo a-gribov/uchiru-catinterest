@@ -5,10 +5,10 @@
   left: 0;
   justify-content: space-around;
   z-index: 1000;
-  box-shadow: 0px 4px 4px 0px #0000003d;
-  background-color: #2196f3;
+  box-shadow: 0px 4px 4px 0px $dark;
+  background-color: $blue100;
   width: 100%;
-  color: white;
+  color: $white;
   user-select: none;
 
   .wrapper {
@@ -19,25 +19,20 @@
 
   .link {
     display: block;
-    transition: color 0.3s ease;
     transition:
       background-color 0.3s ease-in-out,
       color 0.3s ease-in-out;
     padding: 23px;
-    color: rgba(255, 255, 255, 0.7);
-    font-size: 14px;
-    line-height: 21px;
-    letter-spacing: 0.25px;
-    text-decoration: none;
+    color: rgba($white, 0.7);
 
     &:hover:not(.active) {
-      background-color: rgba(30, 136, 229, 0.5);
-      color: rgba(255, 255, 255, 0.9);
+      background-color: rgba($blue, 0.5);
+      color: rgba($white, 0.9);
     }
   }
 
   .active {
-    background-color: rgba(30, 136, 229, 1);
-    color: white;
+    background-color: $blue;
+    color: $white;
   }
 }

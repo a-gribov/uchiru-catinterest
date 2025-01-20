@@ -21,8 +21,8 @@
     left: -16px;
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
-    box-shadow: 0px 6px 5px 0px #0000003d;
-    background-color: #fff;
+    box-shadow: 0px 6px 5px 0px $dark;
+    background-color: $white;
     width: calc(100% + 32px);
     height: calc(100% + 32px);
     content: '';
@@ -33,10 +33,8 @@
     right: 12px;
     bottom: 12px;
     transition: opacity 0.3s ease;
-    cursor: pointer;
     border: none;
     background: none;
-    padding: 0;
     width: 48px;
     height: 48px;
 
@@ -55,18 +53,18 @@
     }
 
     .iconFavorite {
-      fill: #ff3a00;
+      fill: $red;
       opacity: 0;
     }
 
     .iconFavoriteBorder {
-      fill: #f24e1e;
+      fill: $red100;
       opacity: 1;
     }
 
     &.hovered {
       .iconFavorite {
-        fill: #f24e1e;
+        fill: $red100;
         opacity: 1;
       }
       .iconFavoriteBorder {

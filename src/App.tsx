@@ -4,14 +4,13 @@ import ScrollToTop from './components/ScrollToTop'
 import AllCats from './pages/AllCats'
 import FavoriteCats from './pages/FavoriteCats'
 import RouteTitleUpdater from './components/RouteTitleUpdater'
-import styles from './App.module.scss'
 
 const App = () => (
   <Router basename="/uchiru-catinterest">
     <ScrollToTop />
     <RouteTitleUpdater />
     <Header />
-    <div className={styles.content}>
+    <div className="container">
       <Routes>
         <Route path="/" element={<AllCats />} />
         <Route path="/favorites" element={<FavoriteCats />} />
