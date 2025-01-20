@@ -8,28 +8,25 @@ import { observer } from 'mobx-react-lite'
 
 const AllCats = observer(() => {
   const [page, setPage] = useState(1)
+  const [isLoading, setIsLoading] = useState(false)
 
   const loadCats = useCallback(async () => {
-    const response = await fetchCats(10, page)
-    catStore.addCats(response.data)
-    setPage((prevPage) => prevPage + 1)
-  }, [page])
-
-  const checkForScroll = useCallback(() => {
-    const { scrollHeight, clientHeight } = document.documentElement
-    if (scrollHeight <= clientHeight && catStore.hasMoreCats) {
-      loadCats()
+    if (isLoading) return
+    setIsLoading(true)
+    try {
+      const response = await fetchCats(15, page)
+      catStore.addCats(response.data)
+      setPage((prevPage) => prevPage + 1)
+    } finally {
+      setIsLoading(false)
     }
-  }, [loadCats])
+  }, [page, isLoading])
 
   useEffect(() => {
     if (catStore.allCats.length === 0) {
       loadCats()
     }
-    checkForScroll()
-    window.addEventListener('resize', checkForScroll)
-    return () => window.removeEventListener('resize', checkForScroll)
-  }, [loadCats, checkForScroll])
+  }, [loadCats])
 
   return (
     <InfiniteScroll
