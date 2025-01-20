@@ -3,9 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cat Pinterest</title>
+    <title>Redirecting...</title>
     <script>
-      window.location.replace('/uchiru-catinterest/')
+      const pathname = window.location.pathname.replace(
+        '/uchiru-catinterest/',
+        ''
+      )
+      window.location.replace(`/uchiru-catinterest/#${pathname}`)
     </script>
   </head>
   <body>
